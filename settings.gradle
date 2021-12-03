@@ -1,0 +1,6 @@
+rootProject.name = 'vs_rangus-tables'
+
+include 'tables.client', 
+		'tables.model', 
+		'tables.service',
+		'tables.controller'

@@ -1,5 +1,13 @@
+.idea
 .gradle
-/build/
+build/
+gradlew
+gradlew.bat
+
+tables.clint/build
+tables.service/build
+tables.model/build
+tables.controller/build
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -11,4 +19,4 @@ gradle-app.setting
 .gradletasknamecache
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.properties

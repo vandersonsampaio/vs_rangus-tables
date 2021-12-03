@@ -1,0 +1,27 @@
+plugins {
+    id "org.springframework.boot" version "2.1.7.RELEASE"
+}
+
+sourceSets {
+    integrationTests {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    intTestImplementation.extendsFrom implementation
+    intTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+dependencies {
+    implementation project(':tables.service')
+    implementation project(':tables.model')
+    implementation project(':tables.client')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.h2database:h2'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+}
