@@ -1,6 +1,8 @@
 package br.com.vs.rangus.tables.exception;
 
 import br.com.vs.rangus.tables.error.Error;
+import br.com.vs.rangus.tables.exceptions.MerchantNotFoundException;
+import br.com.vs.rangus.tables.exceptions.TableNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -21,6 +23,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleException(Exception ex) {
         loggingError(ex);
         return buildResponseEntity(new Error(HttpStatus.INTERNAL_SERVER_ERROR, ex));
+    }
+
+    @ExceptionHandler({MerchantNotFoundException.class, TableNotFoundException.class})
+    protected ResponseEntity<Object> handleCustomException(Exception ex) {
+        loggingError(ex);
+        return buildResponseEntity(new Error(HttpStatus.BAD_REQUEST, ex));
     }
 
     private void loggingError(Exception ex) {

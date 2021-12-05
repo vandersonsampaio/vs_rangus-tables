@@ -1,3 +1,5 @@
-FROM tomcat:9
+FROM openjdk:8-jdk-alpine
 MAINTAINER vs-rangus-table
-COPY tables.controller/build/libs/table.controller-* /usr/local/tomcat/webapps/rangus-table.war
+RUN mkdir /apps
+COPY tables.controller/build/libs/tables.controller.jar /apps/rangus-table.jar
+ENTRYPOINT ["java", "-jar", "/apps/rangus-table.jar"]
